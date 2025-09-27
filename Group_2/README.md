@@ -5,7 +5,7 @@
 Steps
 
 1. Clone the GitHub Repo (HTTPS): https://github.com/UGA-IEEE/2026_FYC_Projects.git
-```bash
+```shell
 git clone https://github.com/UGA-IEEE/2026_FYC_Projects.git
 ```
 
