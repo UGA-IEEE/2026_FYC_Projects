@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/snp/2026_FYC_Projects/Group_2/BrailleAlphabet'
+relocations:     []
+...
