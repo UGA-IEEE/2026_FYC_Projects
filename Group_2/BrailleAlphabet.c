@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 int main() { 
-    printf("Hello, World!\n"); 
+    int alphabet[26][2][3];
+
+    printf("Complete\n"); 
 
 }
