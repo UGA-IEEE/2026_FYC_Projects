@@ -38,6 +38,7 @@ void initialize_braille_map() {
     strcpy(BRAILLE_MAP['z'], "100111");
     strcpy(BRAILLE_MAP[' '], "000000");
     // Map numbers to Braille (using the same patterns as a-j)
+    // Uses the same ASCII values for numbers, but will have special character before
     strcpy(BRAILLE_MAP['1'], BRAILLE_MAP['a']);
     strcpy(BRAILLE_MAP['2'], BRAILLE_MAP['b']);
     strcpy(BRAILLE_MAP['3'], BRAILLE_MAP['c']);
@@ -48,6 +49,11 @@ void initialize_braille_map() {
     strcpy(BRAILLE_MAP['8'], BRAILLE_MAP['h']);
     strcpy(BRAILLE_MAP['9'], BRAILLE_MAP['i']);
     strcpy(BRAILLE_MAP['0'], BRAILLE_MAP['j']);
+    //special characters that come before letters and numbers to indicate capitalization or number
+    // Capitalization indicator
+    strcpy(BRAILLE_MAP[1], "000010");
+    // Number indicator
+    strcpy(BRAILLE_MAP[2], "000011");
 }
 // 
 
