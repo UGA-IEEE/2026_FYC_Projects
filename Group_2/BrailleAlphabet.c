@@ -1,6 +1,47 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+/// @Braille mapping using ASCII characters (a-z, A-Z, space)
+char BRAILLE_MAP[128][7];
+// Function to initialize the Braille mapping
+void initialize_braille_map() {
+    ///128 values to account for all ASCII characters
+     for (int i = 0; i < 128; i++) {
+        strcpy(BRAILLE_MAP[i], "000000");
+    };
+    ///1 = raised, 0 = not raised using 2D array, copies first string value to the second
+    strcpy(BRAILLE_MAP['a'], "100000");
+    strcpy(BRAILLE_MAP['b'], "101000");
+    strcpy(BRAILLE_MAP['c'], "110000");
+    strcpy(BRAILLE_MAP['d'], "110100");
+    strcpy(BRAILLE_MAP['e'], "100100");
+    strcpy(BRAILLE_MAP['f'], "111000");
+    strcpy(BRAILLE_MAP['g'], "111100");
+    strcpy(BRAILLE_MAP['h'], "101100");
+    strcpy(BRAILLE_MAP['i'], "011000");
+    strcpy(BRAILLE_MAP['j'], "011100");
+    strcpy(BRAILLE_MAP['k'], "100010");
+    strcpy(BRAILLE_MAP['l'], "101010");
+    strcpy(BRAILLE_MAP['m'], "110010");
+    strcpy(BRAILLE_MAP['n'], "110110");
+    strcpy(BRAILLE_MAP['o'], "100110");
+    strcpy(BRAILLE_MAP['p'], "111010");
+    strcpy(BRAILLE_MAP['q'], "111110");
+    strcpy(BRAILLE_MAP['r'], "101110");
+    strcpy(BRAILLE_MAP['s'], "011010");
+    strcpy(BRAILLE_MAP['t'], "011110");
+    strcpy(BRAILLE_MAP['u'], "100011");
+    strcpy(BRAILLE_MAP['v'], "101011");
+    strcpy(BRAILLE_MAP['w'], "010111");
+    strcpy(BRAILLE_MAP['x'], "110011");
+    strcpy(BRAILLE_MAP['y'], "110111");
+    strcpy(BRAILLE_MAP['z'], "100111");
+    strcpy(BRAILLE_MAP[' '], "000000");
+    
+}
+// 
 
 int main() { 
-    printf("Hello, World!\n"); 
-
+    // printf("Hello, World!\n"); 
+    return 0;
 }
