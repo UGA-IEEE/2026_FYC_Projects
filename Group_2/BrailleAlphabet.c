@@ -3,7 +3,7 @@
 #include <ctype.h>
 /// @Braille mapping using ASCII characters (a-z, A-Z, space)
 char BRAILLE_MAP[128][7];
-// Function to initialize the Braille mapping
+// Function to initialize the Braille mapping 
 void initialize_braille_map() {
     ///128 values to account for all ASCII characters
      for (int i = 0; i < 128; i++) {
@@ -37,7 +37,17 @@ void initialize_braille_map() {
     strcpy(BRAILLE_MAP['y'], "110111");
     strcpy(BRAILLE_MAP['z'], "100111");
     strcpy(BRAILLE_MAP[' '], "000000");
-    
+    // Map numbers to Braille (using the same patterns as a-j)
+    strcpy(BRAILLE_MAP['1'], BRAILLE_MAP['a']);
+    strcpy(BRAILLE_MAP['2'], BRAILLE_MAP['b']);
+    strcpy(BRAILLE_MAP['3'], BRAILLE_MAP['c']);
+    strcpy(BRAILLE_MAP['4'], BRAILLE_MAP['d']);
+    strcpy(BRAILLE_MAP['5'], BRAILLE_MAP['e']);
+    strcpy(BRAILLE_MAP['6'], BRAILLE_MAP['f']);
+    strcpy(BRAILLE_MAP['7'], BRAILLE_MAP['g']);
+    strcpy(BRAILLE_MAP['8'], BRAILLE_MAP['h']);
+    strcpy(BRAILLE_MAP['9'], BRAILLE_MAP['i']);
+    strcpy(BRAILLE_MAP['0'], BRAILLE_MAP['j']);
 }
 // 
 
