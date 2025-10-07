@@ -7,7 +7,7 @@ Now that the group has developed a project introduction, develop a Bill of Mater
 Also, write a basic "Hello World" program and `git commit` and `git push` to the remote repository to prove that the group is capable of utilizing Git as a version control tool.
 
 ## Individual Goals
-<b>Saud and Mary</b>
+<b>Saud, Mary, and Udaya</b>
 1. Using an input voltage of 3.3V, build a voltage divider . Draw the circuit, write the general equation in terms of Vout, test on Multisim, build on hardware, and show the results on the multimeter. Be sure to take screenshots and pictures! 
 
 <p align="center">
@@ -20,9 +20,11 @@ Also, write a basic "Hello World" program and `git commit` and `git push` to the
     <img alt="Wheatstone Bridge" src="./img/wheatstone_bridge.jpeg">
 </p>
 
-Note: if you can't see the photo, try downloading it, or view in light-mode.
+3. Using Fusion or a different CAD software of your choice, design a box to fit a small breadboard. No need to print - just want you guys to practice designing 3D models.
 
-<b>Owen and Udaya</b>
+4. As a bonus, design the Wheatstone bridge on a PCB using Altium or Fusion, then design a box that would fit that PCB in some form. Add headers to the PCB to be able to screw in the board to the box. 
+
+<b>Owen</b>
 1. When looking at the pinouts of the ESP32 and Raspberry Pi, start thinking about the potential protocols that need to be utilized for the communication between the hardware to the microcontrollers to the software. Also, keep looking into the different software packages/modules that might need to utilized to deliver the most optimal results.  
 
 2. Research how git branching can be utilized to benefit the software development.  
