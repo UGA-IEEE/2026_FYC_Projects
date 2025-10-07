@@ -1,4 +1,4 @@
-# Deliverable 1
+# Deliverable 1 - Week of 10/7/2025
 Great job on the project introduction and keep up the good work!
 
 ## Group Goal of the Week
@@ -17,7 +17,7 @@ Also, write a basic "Hello World" program and `git commit` and `git push` to the
 2. Now that you've built a voltage divider, build a Wheatstone bridge. Again, write the general equation in terms of Vout, test on Multisim, build on hardware, and show the results on the multimeter for each side of the Wheatstone bridge. Be sure to take screenshots and pictures!  
 
 <p align="center">
-    <img alt="Voltage Divider" src="./img/wheatstone_bridge.png">
+    <img alt="Wheatstone Bridge" src="./img/wheatstone_bridge.jpeg">
 </p>
 
 Note: if you can't see the photo, try downloading it, or view in light-mode.
