@@ -73,12 +73,13 @@ int main() {
     initialize_braille_map();
     char input[256];
     printf("Enter a string to convert to Braille: ");
+    // test
     // error handling for fgets to prevent bad input
     if (fgets(input, sizeof(input), stdin) == NULL) {
         fprintf(stderr, "Error reading input.\n");
         return 1;
     }
-    
+
 
 
 }
