@@ -57,7 +57,12 @@ void initialize_braille_map() {
 }
 // 
 
-int main() { 
-    // printf("Hello, World!\n"); 
-    return 0;
+void print_braille(const char* patterns[], int count){
+    if (count == 0) return;
+    //Converts 1 or 0 to visual representation
+    #define VISUAL_DOT(bit) ((bit) == '1' ? '0' : '.')
+    //print top row of all characters (dots 1 and 4)
+    for (int i = 0; i < count; i++) {
+        printf("%c ", VISUAL_DOT(patterns[i][0]));
+    }
 }
