@@ -68,6 +68,7 @@ void initialize_braille_map() {
 // }
 
 int main() {
+    printf("Txt Document: ");
     initialize_braille_map();
     char input[256];
     // Array to hold Braille patterns for each character in the input
@@ -79,6 +80,8 @@ int main() {
         fprintf(stderr, "Error reading input.\n");
         return 1;
     }
+    // remove the new line character from fgets
+    input[strcspn(input, "\n")] = 0;
 
 
 
