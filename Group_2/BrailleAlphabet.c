@@ -57,24 +57,24 @@ void initialize_braille_map() {
 }
 // 
 
-void print_braille(const char* patterns[], int count){
-    if (count == 0) return;
-    //Converts 1 or 0 to visual representation
-    #define VISUAL_DOT(bit) ((bit) == '1' ? '0' : '.')
-    //print top row of all characters (dots 1 and 4)
-    for (int i = 0; i < count; i++) {
-        printf("%c ", VISUAL_DOT(patterns[i][0]));
-    }
+// void print_braille(const char* patterns[], int count){
+//     if (count == 0) return;
+//     //Converts 1 or 0 to visual representation
+//     #define VISUAL_DOT(bit) ((bit) == '1' ? '0' : '.')
+//     //print top row of all characters (dots 1 and 4)
+//     for (int i = 0; i < count; i++) {
+//         printf("%c ", VISUAL_DOT(patterns[i][0]));
+//     }
+// }
 
-
-
-}
 int main() {
     initialize_braille_map();
     char input[256];
+    // Array to hold Braille patterns for each character in the input
+    const char* braille_patterns[512];
     printf("Enter a string to convert to Braille: ");
-    // test
     // error handling for fgets to prevent bad input
+
     if (fgets(input, sizeof(input), stdin) == NULL) {
         fprintf(stderr, "Error reading input.\n");
         return 1;
