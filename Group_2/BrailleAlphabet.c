@@ -72,6 +72,7 @@ int main() {
     initialize_braille_map();
     char input[256];
     // Array to hold Braille patterns for each character in the input
+    ///512 max characters, but will be changed later
     const char* braille_patterns[512];
     printf("Enter a string to convert to Braille: ");
     // error handling for fgets to prevent bad input
@@ -82,6 +83,16 @@ int main() {
     }
     // remove the new line character from fgets
     input[strcspn(input, "\n")] = 0;
+    // Process the input string character by character
+
+    for (int i = 0; i < strlen(input) && pattern_count < 512; i++) {
+        char current_char = input[i];
+
+        if (isupper(current_char)) {
+            // Add Capital Sign prefix (stored at index 1)
+            braille_patterns[pattern_count++] = BRAILLE_MAP[1];
+            // Add the pattern for the lowercase version
+            braille_patterns[pattern_count++] = BRAILLE_MAP[tolower(current_char)]
 
 
 
