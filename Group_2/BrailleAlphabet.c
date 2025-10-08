@@ -65,4 +65,20 @@ void print_braille(const char* patterns[], int count){
     for (int i = 0; i < count; i++) {
         printf("%c ", VISUAL_DOT(patterns[i][0]));
     }
+
+
+
+}
+int main() {
+    initialize_braille_map();
+    char input[256];
+    printf("Enter a string to convert to Braille: ");
+    // error handling for fgets to prevent bad input
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+        fprintf(stderr, "Error reading input.\n");
+        return 1;
+    }
+    
+
+
 }
