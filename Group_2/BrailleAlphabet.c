@@ -93,7 +93,7 @@ int main() {
             braille_patterns[pattern_count++] = BRAILLE_MAP[1];
             // Add the pattern for the lowercase version
             braille_patterns[pattern_count++] = BRAILLE_MAP[tolower(current_char)]
-
+        }
 
 
 }
