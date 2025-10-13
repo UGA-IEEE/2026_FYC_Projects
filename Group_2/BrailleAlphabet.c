@@ -57,7 +57,44 @@ void initialize_braille_map() {
 }
 // 
 
-int main() { 
-    // printf("Hello, World!\n"); 
-    return 0;
+// void print_braille(const char* patterns[], int count){
+//     if (count == 0) return;
+//     //Converts 1 or 0 to visual representation
+//     #define VISUAL_DOT(bit) ((bit) == '1' ? '0' : '.')
+//     //print top row of all characters (dots 1 and 4)
+//     for (int i = 0; i < count; i++) {
+//         printf("%c ", VISUAL_DOT(patterns[i][0]));
+//     }
+// }
+
+int main() {
+    printf("Txt Document: ");
+    initialize_braille_map();
+    char input[256];
+    // Array to hold Braille patterns for each character in the input
+    ///512 max characters, but will be changed later
+    const char* braille_patterns[512];
+    int pattern_count = 0;
+    printf("Enter a string to convert to Braille: ");
+    // error handling for fgets to prevent bad input
+
+    if (fgets(input, sizeof(input), stdin) == NULL) {
+        fprintf(stderr, "Error reading input.\n");
+        return 1;
+    }
+    // remove the new line character from fgets
+    input[strcspn(input, "\n")] = 0;
+    // Process the input string character by character
+
+    for (int i = 0; i < strlen(input) && pattern_count < 512; i++) {
+        char current_char = input[i];
+
+        if (isupper(current_char)) {
+            // Add Capital Sign prefix (stored at index 1)
+            braille_patterns[pattern_count++] = BRAILLE_MAP[1];
+            // Add the pattern for the lowercase version
+            braille_patterns[pattern_count++] = BRAILLE_MAP[tolower(current_char)];
+        }
+    }
+
 }
