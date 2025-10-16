@@ -55,17 +55,26 @@ void initialize_braille_map() {
     // Number indicator
     strcpy(BRAILLE_MAP[2], "000011");
 }
-// 
 
-// void print_braille(const char* patterns[], int count){
-//     if (count == 0) return;
-//     //Converts 1 or 0 to visual representation
-//     #define VISUAL_DOT(bit) ((bit) == '1' ? '0' : '.')
-//     //print top row of all characters (dots 1 and 4)
-//     for (int i = 0; i < count; i++) {
-//         printf("%c ", VISUAL_DOT(patterns[i][0]));
-//     }
-// }
+// Function to print Braille patterns in a readable format. It was easier to print this was than to print letter by letter.
+void print_braille(const char* patterns[], int count){
+    if (count == 0) return;
+    //print top row of all characters (dots 1 and 4)
+    for (int i = 0; i < count; i++) {
+        printf("%c%c ", patterns[i][0], patterns[i][3]);
+    }
+    printf("\n");
+    //print middle row of all characters (dots 2 and 5)
+    for (int i = 0; i < count; i++) {
+        printf("%c%c ", patterns[i][1], patterns[i][4]);
+    }
+    printf("\n");
+    //print bottom row of all characters (dots 3 and 6)
+    for (int i = 0; i < count; i++) {
+        printf("%c%c ", patterns[i][2], patterns[i][5]);
+    }
+    printf("\n");
+}
 
 int main() {
     printf("Txt Document: ");
@@ -104,5 +113,7 @@ int main() {
             braille_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
         }
     }
+
+
 
 }
