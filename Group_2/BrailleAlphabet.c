@@ -94,14 +94,14 @@ int main() {
             braille_patterns[pattern_count++] = BRAILLE_MAP[1];
             // Add the pattern for the lowercase version
             braille_patterns[pattern_count++] = BRAILLE_MAP[tolower(current_char)];
-        } else if (isdigit(current_chat)){
+        } else if (isdigit(current_char)){
             //add number sign prefix
-            output_patterns[pattern_count++] = BRAILLE_MAP[2];
+            braille_patterns[pattern_count++] = BRAILLE_MAP[2];
             //Add the pattern for the digit
-            output_patterns[pattern_count++] = BRAILLE_MAP[current_char];
+            braille_patterns[pattern_count++] = BRAILLE_MAP[current_char];
         } else {
             //For lowercase, space, or undandled characters
-            output_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
+            braille_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
         }
     }
 
