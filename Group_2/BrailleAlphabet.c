@@ -116,6 +116,6 @@ int main() {
     /* Print the result as a visual Braille representation (3 rows) */
     print_braille(braille_patterns, pattern_count);
     return 0;
-
+// test
 
 }
