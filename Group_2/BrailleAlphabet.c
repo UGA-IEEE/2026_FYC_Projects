@@ -108,7 +108,7 @@ int main() {
             //Add the pattern for the digit
             braille_patterns[pattern_count++] = BRAILLE_MAP[current_char];
         } else {
-            //For lowercase, space, or undandled characters
+            //For lowercase, space, or unhandled characters
             braille_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
         }
     }
@@ -116,10 +116,6 @@ int main() {
     /* Print the result as a visual Braille representation (3 rows) */
     print_braille(braille_patterns, pattern_count);
     return 0;
-
-    print_braille(braille_patterns, pattern_count);
-    return 0;
-
 
 
 }
