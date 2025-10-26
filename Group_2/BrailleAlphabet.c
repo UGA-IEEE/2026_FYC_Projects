@@ -113,5 +113,9 @@ int main() {
             braille_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
         }
     }
+    
+    /* Print the result as a visual Braille representation (3 rows) */
+    print_braille(braille_patterns, pattern_count);
+    return 0;
 
 }
