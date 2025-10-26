@@ -77,7 +77,6 @@ void print_braille(const char* patterns[], int count){
 }
 
 int main() {
-    printf("Txt Document: ");
     initialize_braille_map();
     char input[256];
     // Array to hold Braille patterns for each character in the input
@@ -113,6 +112,9 @@ int main() {
             braille_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
         }
     }
+
+    print_braille(braille_patterns, pattern_count);
+    return 0;
 
 
 
