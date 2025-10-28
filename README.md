@@ -12,7 +12,9 @@ Each year, students are assigned to groups and tasked with developing a project 
 
 ## Group 1
 
-'''Project Description'''
+<b>SleepSense Alarm Clock</b>
+
+The SleepSense Alarm Clock uses a wearable PPG-sensor-based sleep tracker to track your sleep patterns throughout the night and establish a record of your sleep to better inform you about your ideal sleep and wake times, featuring an interactive LCD screen and mobile app connectivity.
 
 | Team Member           |  Major         
 | --------------------- |:-------------| 
