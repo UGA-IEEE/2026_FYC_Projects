@@ -1,4 +1,4 @@
-# Deliverable 3 - Complete by 11/3/2025 
+# Deliverable 3 - Complete by 11/7/2025 
 As a note, make sure deliverables are completed <b>BEFORE</b> your next meeting! This allows me to help you debug circuits or code by the time I get to the meeting.
 
 ## Hardware Deliverable
