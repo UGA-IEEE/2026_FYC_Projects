@@ -1,6 +1,9 @@
 # Deliverable 3 - Complete by 11/7/2025 
 As a note, make sure deliverables are completed <b>BEFORE</b> your next meeting! This allows me to help you debug circuits or code by the time I get to the meeting.
 
+## Group Goal
+Create a 10-minute presentation about your project. Discuss some of the things that you are working on for the project (utilizing the Pi, learning signal processing methods). Do not forget to describe how you are going to accomplish the final product (flow diagrams are a great way to represent this).
+
 ## Hardware Deliverable
 1. Take a look at the 741 operational amplifier and its datasheet. In the Circuits lab, it can be found as the TL081CP integrated circuit (IC) chip. The op-amp could be an important component in the signal processing steps of this project. There are many video resources that can also help you with this.  
 
