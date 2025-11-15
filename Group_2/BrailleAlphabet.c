@@ -1,6 +1,140 @@
+/**
+ * @file braille_translator.c
+ * @brief A C program to translate lines from a file into a visual Braille representation.
+ *
+ * This program reads each line from a file and prints its Braille equivalent to the console.
+ * It handles uppercase letters, lowercase letters, numbers, and spaces.
+ */
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-int main() { 
-    printf("Hello, World!\n"); 
+/// @Braille mapping using ASCII characters (a-z, A-Z, space)
+char BRAILLE_MAP[128][7];
+
+// Function to initialize the Braille mapping 
+void initialize_braille_map() {
+    // 128 values to account for all ASCII characters
+    for (int i = 0; i < 128; i++) {
+        strcpy(BRAILLE_MAP[i], "000000");
+    }
+
+    // 1 = raised, 0 = not raised using 2D array
+    strcpy(BRAILLE_MAP['a'], "100000");
+    strcpy(BRAILLE_MAP['b'], "101000");
+    strcpy(BRAILLE_MAP['c'], "110000");
+    strcpy(BRAILLE_MAP['d'], "110100");
+    strcpy(BRAILLE_MAP['e'], "100100");
+    strcpy(BRAILLE_MAP['f'], "111000");
+    strcpy(BRAILLE_MAP['g'], "111100");
+    strcpy(BRAILLE_MAP['h'], "101100");
+    strcpy(BRAILLE_MAP['i'], "011000");
+    strcpy(BRAILLE_MAP['j'], "011100");
+    strcpy(BRAILLE_MAP['k'], "100010");
+    strcpy(BRAILLE_MAP['l'], "101010");
+    strcpy(BRAILLE_MAP['m'], "110010");
+    strcpy(BRAILLE_MAP['n'], "110110");
+    strcpy(BRAILLE_MAP['o'], "100110");
+    strcpy(BRAILLE_MAP['p'], "111010");
+    strcpy(BRAILLE_MAP['q'], "111110");
+    strcpy(BRAILLE_MAP['r'], "101110");
+    strcpy(BRAILLE_MAP['s'], "011010");
+    strcpy(BRAILLE_MAP['t'], "011110");
+    strcpy(BRAILLE_MAP['u'], "100011");
+    strcpy(BRAILLE_MAP['v'], "101011");
+    /* corrected 'w' pattern */
+    strcpy(BRAILLE_MAP['w'], "011101");
+    strcpy(BRAILLE_MAP['x'], "110011");
+    strcpy(BRAILLE_MAP['y'], "110111");
+    strcpy(BRAILLE_MAP['z'], "100111");
+    strcpy(BRAILLE_MAP[' '], "000000");
+
+    // Map numbers to Braille (using the same patterns as a-j)
+    strcpy(BRAILLE_MAP['1'], BRAILLE_MAP['a']);
+    strcpy(BRAILLE_MAP['2'], BRAILLE_MAP['b']);
+    strcpy(BRAILLE_MAP['3'], BRAILLE_MAP['c']);
+    strcpy(BRAILLE_MAP['4'], BRAILLE_MAP['d']);
+    strcpy(BRAILLE_MAP['5'], BRAILLE_MAP['e']);
+    strcpy(BRAILLE_MAP['6'], BRAILLE_MAP['f']);
+    strcpy(BRAILLE_MAP['7'], BRAILLE_MAP['g']);
+    strcpy(BRAILLE_MAP['8'], BRAILLE_MAP['h']);
+    strcpy(BRAILLE_MAP['9'], BRAILLE_MAP['i']);
+    strcpy(BRAILLE_MAP['0'], BRAILLE_MAP['j']);
+
+    // special characters that come before letters and numbers to indicate capitalization or number
+    // Capitalization indicator
+    strcpy(BRAILLE_MAP[1], "000010");
+    // Number indicator (corrected)
+    strcpy(BRAILLE_MAP[2], "001111");
+}
+
+// Function to print Braille patterns in a readable format.
+void print_braille(const char* patterns[], int count){
+    if (count == 0) return;
+    // print top row of all characters (dots 1 and 4)
+    for (int i = 0; i < count; i++) {
+        printf("%c%c ", patterns[i][0], patterns[i][3]);
+    }
+    printf("\n");
+    // print middle row of all characters (dots 2 and 5)
+    for (int i = 0; i < count; i++) {
+        printf("%c%c ", patterns[i][1], patterns[i][4]);
+    }
+    printf("\n");
+    // print bottom row of all characters (dots 3 and 6)
+    for (int i = 0; i < count; i++) {
+        printf("%c%c ", patterns[i][2], patterns[i][5]);
+    }
+    printf("\n");
+}
+
+// Updated main to accept command-line arguments and read a file
+int main(int argc, char *argv[]) {
+    initialize_braille_map();
+    char input[256];
+    const char* braille_patterns[512];
+    int pattern_count = 0;
+
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
+
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    while (fgets(input, sizeof(input), file) != NULL) {
+        pattern_count = 0;
+        input[strcspn(input, "\n")] = 0;
+
+        for (int i = 0; i < (int)strlen(input) && pattern_count < 512; i++) {
+            unsigned char current_char = (unsigned char)input[i];
+            int idx = current_char < 128 ? current_char : ' ';
+
+            if (isupper((int)current_char)) {
+                // Add Capital Sign prefix (stored at index 1)
+                braille_patterns[pattern_count++] = BRAILLE_MAP[1];
+                // Add the pattern for the lowercase version
+                braille_patterns[pattern_count++] = BRAILLE_MAP[tolower((int)current_char)];
+            } else if (isdigit((int)current_char)){
+                // add number sign prefix
+                braille_patterns[pattern_count++] = BRAILLE_MAP[2];
+                // Add the pattern for the digit
+                braille_patterns[pattern_count++] = BRAILLE_MAP[idx];
+            } else {
+                // For lowercase, space, or unhandled characters
+                braille_patterns[pattern_count++] = BRAILLE_MAP[idx];
+            }
+        }
+
+        printf("Original: %s\n", input);
+        print_braille(braille_patterns, pattern_count);
+        printf("\n");
+    }
+
+    fclose(file);
     return 0;
 }
