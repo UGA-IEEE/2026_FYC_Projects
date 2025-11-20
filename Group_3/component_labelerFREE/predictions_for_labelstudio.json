@@ -1,0 +1,704 @@
+[
+  {
+    "task_path": "dataset\\IMG_9351.JPG",
+    "image": "dataset\\IMG_9351.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.44 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9352.JPG",
+    "image": "dataset\\IMG_9352.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.53 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9353.JPG",
+    "image": "dataset\\IMG_9353.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.53 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9354.JPG",
+    "image": "dataset\\IMG_9354.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.62 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9355.JPG",
+    "image": "dataset\\IMG_9355.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.84 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9356.JPG",
+    "image": "dataset\\IMG_9356.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.46 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9357.JPG",
+    "image": "dataset\\IMG_9357.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.61 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9358.JPG",
+    "image": "dataset\\IMG_9358.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.57 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9359.JPG",
+    "image": "dataset\\IMG_9359.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.43 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9360.JPG",
+    "image": "dataset\\IMG_9360.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.50 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9361.JPG",
+    "image": "dataset\\IMG_9361.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.52 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9362.JPG",
+    "image": "dataset\\IMG_9362.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.87 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9363.JPG",
+    "image": "dataset\\IMG_9363.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.53 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9364.JPG",
+    "image": "dataset\\IMG_9364.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=1.00 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9365.JPG",
+    "image": "dataset\\IMG_9365.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.83 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9366.JPG",
+    "image": "dataset\\IMG_9366.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.74 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9367.JPG",
+    "image": "dataset\\IMG_9367.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.48 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9368.JPG",
+    "image": "dataset\\IMG_9368.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.72 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9369.JPG",
+    "image": "dataset\\IMG_9369.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.60 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9370.JPG",
+    "image": "dataset\\IMG_9370.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.75 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9371.JPG",
+    "image": "dataset\\IMG_9371.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.67 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9372.JPG",
+    "image": "dataset\\IMG_9372.JPG",
+    "predicted_label": "RAM",
+    "reason": "score=0.39 for RAM"
+  },
+  {
+    "task_path": "dataset\\IMG_9373.JPG",
+    "image": "dataset\\IMG_9373.JPG",
+    "predicted_label": "RAM",
+    "reason": "score=0.31 for RAM"
+  },
+  {
+    "task_path": "dataset\\IMG_9374.JPG",
+    "image": "dataset\\IMG_9374.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.52 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9375.JPG",
+    "image": "dataset\\IMG_9375.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.73 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9376.JPG",
+    "image": "dataset\\IMG_9376.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.82 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9377.JPG",
+    "image": "dataset\\IMG_9377.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.68 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9378.JPG",
+    "image": "dataset\\IMG_9378.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.64 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9379.JPG",
+    "image": "dataset\\IMG_9379.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.70 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9380.JPG",
+    "image": "dataset\\IMG_9380.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.89 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9381.JPG",
+    "image": "dataset\\IMG_9381.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.74 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9382.JPG",
+    "image": "dataset\\IMG_9382.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.72 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9383.JPG",
+    "image": "dataset\\IMG_9383.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.72 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9384.JPG",
+    "image": "dataset\\IMG_9384.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=1.00 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9385.JPG",
+    "image": "dataset\\IMG_9385.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.76 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9386.JPG",
+    "image": "dataset\\IMG_9386.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.87 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9387.JPG",
+    "image": "dataset\\IMG_9387.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.65 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9388.JPG",
+    "image": "dataset\\IMG_9388.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.42 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9389.JPG",
+    "image": "dataset\\IMG_9389.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.72 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9390.JPG",
+    "image": "dataset\\IMG_9390.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.38 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9391.JPG",
+    "image": "dataset\\IMG_9391.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.64 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9392.JPG",
+    "image": "dataset\\IMG_9392.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.71 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9393.JPG",
+    "image": "dataset\\IMG_9393.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.54 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9394.JPG",
+    "image": "dataset\\IMG_9394.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.59 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9395.JPG",
+    "image": "dataset\\IMG_9395.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.52 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9396.JPG",
+    "image": "dataset\\IMG_9396.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.44 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9397.JPG",
+    "image": "dataset\\IMG_9397.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.77 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9398.JPG",
+    "image": "dataset\\IMG_9398.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.98 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9399.JPG",
+    "image": "dataset\\IMG_9399.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.81 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9400.JPG",
+    "image": "dataset\\IMG_9400.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.50 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9401.JPG",
+    "image": "dataset\\IMG_9401.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.53 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9402.JPG",
+    "image": "dataset\\IMG_9402.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.87 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9403.JPG",
+    "image": "dataset\\IMG_9403.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.84 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9404.JPG",
+    "image": "dataset\\IMG_9404.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.84 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9405.JPG",
+    "image": "dataset\\IMG_9405.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.80 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9406.JPG",
+    "image": "dataset\\IMG_9406.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.90 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9407.JPG",
+    "image": "dataset\\IMG_9407.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.83 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9408.JPG",
+    "image": "dataset\\IMG_9408.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.79 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9409.JPG",
+    "image": "dataset\\IMG_9409.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.58 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9410.JPG",
+    "image": "dataset\\IMG_9410.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.47 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9411.JPG",
+    "image": "dataset\\IMG_9411.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.74 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9412.JPG",
+    "image": "dataset\\IMG_9412.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.95 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9413.JPG",
+    "image": "dataset\\IMG_9413.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.92 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9414.JPG",
+    "image": "dataset\\IMG_9414.JPG",
+    "predicted_label": "RAM",
+    "reason": "score=0.43 for RAM"
+  },
+  {
+    "task_path": "dataset\\IMG_9415.JPG",
+    "image": "dataset\\IMG_9415.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.40 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9416.JPG",
+    "image": "dataset\\IMG_9416.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.51 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9417.JPG",
+    "image": "dataset\\IMG_9417.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.54 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9418.JPG",
+    "image": "dataset\\IMG_9418.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.36 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9419.JPG",
+    "image": "dataset\\IMG_9419.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.38 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9420.JPG",
+    "image": "dataset\\IMG_9420.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.35 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9421.JPG",
+    "image": "dataset\\IMG_9421.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.37 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9422.JPG",
+    "image": "dataset\\IMG_9422.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.39 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9423.JPG",
+    "image": "dataset\\IMG_9423.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.42 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9424.JPG",
+    "image": "dataset\\IMG_9424.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.64 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9425.JPG",
+    "image": "dataset\\IMG_9425.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.55 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9426.JPG",
+    "image": "dataset\\IMG_9426.JPG",
+    "predicted_label": "RAM",
+    "reason": "score=0.34 for RAM"
+  },
+  {
+    "task_path": "dataset\\IMG_9427.JPG",
+    "image": "dataset\\IMG_9427.JPG",
+    "predicted_label": "RAM",
+    "reason": "score=0.40 for RAM"
+  },
+  {
+    "task_path": "dataset\\IMG_9428.JPG",
+    "image": "dataset\\IMG_9428.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.32 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9429.JPG",
+    "image": "dataset\\IMG_9429.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.35 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9430.JPG",
+    "image": "dataset\\IMG_9430.JPG",
+    "predicted_label": "RAM",
+    "reason": "score=0.35 for RAM"
+  },
+  {
+    "task_path": "dataset\\IMG_9431.JPG",
+    "image": "dataset\\IMG_9431.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.50 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9432.JPG",
+    "image": "dataset\\IMG_9432.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.56 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9433.JPG",
+    "image": "dataset\\IMG_9433.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.55 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9434.JPG",
+    "image": "dataset\\IMG_9434.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.73 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9435.JPG",
+    "image": "dataset\\IMG_9435.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.76 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9436.JPG",
+    "image": "dataset\\IMG_9436.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.67 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9437.JPG",
+    "image": "dataset\\IMG_9437.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.59 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9438.JPG",
+    "image": "dataset\\IMG_9438.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.63 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9439.JPG",
+    "image": "dataset\\IMG_9439.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.58 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9440.JPG",
+    "image": "dataset\\IMG_9440.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.79 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9441.JPG",
+    "image": "dataset\\IMG_9441.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.80 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9442.JPG",
+    "image": "dataset\\IMG_9442.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.50 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9443.JPG",
+    "image": "dataset\\IMG_9443.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=0.62 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9444.JPG",
+    "image": "dataset\\IMG_9444.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.80 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9445.JPG",
+    "image": "dataset\\IMG_9445.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.73 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9446.JPG",
+    "image": "dataset\\IMG_9446.JPG",
+    "predicted_label": "USB_Drive",
+    "reason": "score=1.00 for USB_Drive"
+  },
+  {
+    "task_path": "dataset\\IMG_9447.JPG",
+    "image": "dataset\\IMG_9447.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.72 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9448.JPG",
+    "image": "dataset\\IMG_9448.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.77 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9449.JPG",
+    "image": "dataset\\IMG_9449.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.64 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9450.JPG",
+    "image": "dataset\\IMG_9450.JPG",
+    "predicted_label": "CPU",
+    "reason": "score=0.67 for CPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9451.JPG",
+    "image": "dataset\\IMG_9451.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.85 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9452.JPG",
+    "image": "dataset\\IMG_9452.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.84 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9453.JPG",
+    "image": "dataset\\IMG_9453.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.95 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9454.JPG",
+    "image": "dataset\\IMG_9454.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.95 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9455.JPG",
+    "image": "dataset\\IMG_9455.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.95 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9456.JPG",
+    "image": "dataset\\IMG_9456.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.95 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9457.JPG",
+    "image": "dataset\\IMG_9457.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.96 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9458.JPG",
+    "image": "dataset\\IMG_9458.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.66 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9459.JPG",
+    "image": "dataset\\IMG_9459.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.96 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9460.JPG",
+    "image": "dataset\\IMG_9460.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.95 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9461.JPG",
+    "image": "dataset\\IMG_9461.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.96 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9462.JPG",
+    "image": "dataset\\IMG_9462.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.96 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9463.JPG",
+    "image": "dataset\\IMG_9463.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.94 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9464.JPG",
+    "image": "dataset\\IMG_9464.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.93 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9465.JPG",
+    "image": "dataset\\IMG_9465.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.94 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9466.JPG",
+    "image": "dataset\\IMG_9466.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.94 for GPU"
+  },
+  {
+    "task_path": "dataset\\IMG_9467.JPG",
+    "image": "dataset\\IMG_9467.JPG",
+    "predicted_label": "GPU",
+    "reason": "score=0.97 for GPU"
+  }
+]

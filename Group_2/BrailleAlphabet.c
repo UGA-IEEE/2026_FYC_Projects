@@ -32,7 +32,7 @@ void initialize_braille_map() {
     strcpy(BRAILLE_MAP['t'], "011110");
     strcpy(BRAILLE_MAP['u'], "100011");
     strcpy(BRAILLE_MAP['v'], "101011");
-    strcpy(BRAILLE_MAP['w'], "010111");
+    strcpy(BRAILLE_MAP['w'], "011101");
     strcpy(BRAILLE_MAP['x'], "110011");
     strcpy(BRAILLE_MAP['y'], "110111");
     strcpy(BRAILLE_MAP['z'], "100111");
@@ -77,7 +77,6 @@ void print_braille(const char* patterns[], int count){
 }
 
 int main() {
-    printf("Txt Document: ");
     initialize_braille_map();
     char input[256];
     // Array to hold Braille patterns for each character in the input
@@ -109,12 +108,12 @@ int main() {
             //Add the pattern for the digit
             braille_patterns[pattern_count++] = BRAILLE_MAP[current_char];
         } else {
-            //For lowercase, space, or undandled characters
+            //For lowercase, space, or unhandled characters
             braille_patterns[pattern_count++] = BRAILLE_MAP[(int)current_char];
         }
     }
     
-    /* Print the result as a visual Braille representation (3 rows) */
+    //Print the result as a visual Braille representation (3 rows)
     print_braille(braille_patterns, pattern_count);
     return 0;
 
