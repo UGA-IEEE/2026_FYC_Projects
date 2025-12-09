@@ -3,7 +3,7 @@ For the next few weeks, the deliverables will be structured differently.
 Instead of "hardware" and "software" deliverables, each task will be delegated for each person. 
 
 ## Everyone (except Owen)
-1. Complete two CodingBat tasks per week in C++. If you do not know how to program, start in Python. Add this to your OneNote. 
+1. Complete two CodingBat tasks per week in Python. If you do not know how to program, this is a great chance to learn. Add this to your OneNote. 
 
 ## Mary
 1. Continue developing the CAD sketch of the alarm clock system. Represent everything - RP5, Screen, Pogo Pins, Wearable. Look online for the size of the components. Utilize layers to be able to differentiate from all working parts of the system.
