@@ -1,0 +1,13 @@
+import PyPDF2
+
+def pdf2txt(pdf_path):
+    with open(pdf_path, "rb") as file:
+        reader = PyPDF2.PdfReader(file)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text()
+
+        return text
+    
+text = pdf2txt("Syllabus LING.pdf")
+print(text)

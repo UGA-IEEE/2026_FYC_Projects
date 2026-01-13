@@ -1,0 +1,43 @@
+{
+  "name": "pdf-text-extractor",
+  "displayName": "PDF Text Extractor",
+  "description": "Automatically extracts text from PDF files and saves as .txt",
+  "version": "1.0.0",
+  "publisher": "ieee-group2",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Other"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pdf-extractor.extractPdf",
+        "title": "Extract Text from PDF"
+      },
+      {
+        "command": "pdf-extractor.autoExtract",
+        "title": "Auto-extract all PDFs in folder"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "pdf-extractor.extractPdf",
+          "when": "resourceExtname == .pdf",
+          "group": "2_workspace"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^12.11.7",
+    "typescript": "^4.1.3"
+  }
+}
