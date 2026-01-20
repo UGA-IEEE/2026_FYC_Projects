@@ -10,15 +10,8 @@ NVIDIA GPU with CUDA support (recommended)
 Installation
 bashpip install ultralytics opencv-python
 Dataset Setup
-Download the training dataset from [Google Drive link] and extract to:
-ewaste_dataset/
-├── train/
-│   ├── images/
-│   └── labels/
-├── val/
-│   ├── images/
-│   └── labels/
-└── ewaste.yaml
+
+
 Training
 bashpy -3.11 train.py
 Training parameters:
@@ -32,8 +25,7 @@ Live Demo
 Run real-time detection using your webcam:
 bashpy -3.11 live_demo.py
 Press q to quit.
-Results
-MetricValuemAP5095.5%Training time~3.5 minInference speed~1.5ms/image
+
 Files
 FileDescriptiontrain.pyModel training scriptlive_demo.pyWebcam inference demodataset_train.pyDataset preparation and train/val splitewaste.yamlDataset configuration
 Model Weights
@@ -41,3 +33,4 @@ After training, weights are saved to:
 
 runs/train/weights/best.pt - Best performing model
 runs/train/weights/last.pt - Final epoch model
+
