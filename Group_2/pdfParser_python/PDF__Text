@@ -1,6 +1,9 @@
+#imports the library needed
 import PyPDF2
 
+#defines a fn that takes the parameter pdf_path 
 def pdf2txt(pdf_path):
+#
     with open(pdf_path, "rb") as file:
         reader = PyPDF2.PdfReader(file)
         text = ""
