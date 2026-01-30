@@ -2,9 +2,9 @@ from ultralytics import YOLO
 import cv2
 
 if __name__ == '__main__':
-    model = YOLO(r'C:\Users\hieu1\ml_projects\runs\train2\weights\best.pt')
+    model = YOLO('best.pt')  # Load your trained model
     
-    cap = cv2.VideoCapture(0)  # Your webcam
+    cap = cv2.VideoCapture(1)  # Your webcam
     
     while True:
         ret, frame = cap.read()
