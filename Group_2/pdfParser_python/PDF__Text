@@ -17,7 +17,8 @@ else:
 
 # Part 2: Extract Text
 reader = PdfReader(target_path)
-full_text = "\n".join([page.extract_text() for page in reader.pages if page.extract_text()])
+full_text = " ".join([page.extract_text() for page in reader.pages if page.extract_text()])
+full_text = full_text.replace("\n", "")
 
 #Part 3: Print to Terminal
 if full_text.strip():
