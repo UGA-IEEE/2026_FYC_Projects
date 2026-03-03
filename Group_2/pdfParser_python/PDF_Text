@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 
 
 base_dir = Path(__file__).parent
-# Part 1: Find and Rename
+# part 1: Find and Rename
 pdf_files = [f for f in base_dir.glob("*.pdf") if f.name != "neededtxt.pdf"]
 
 
@@ -14,9 +14,10 @@ if not pdf_files:
         print("No PDF found.")
         exit()
 else:
+# rename file for BrailleAlphabet code
     target_path = base_dir / "neededtxt.pdf"
     pdf_files[0].replace(target_path)
-    print(f"File Renamed: {pdf_files[0].name} -> neededtxt.pdf")
+    print(f"File Renamed: {pdf_files[0].name} neededtxt.pdf")
 
 
 # Part 2: Extract Text
@@ -33,23 +34,5 @@ if full_text.strip():
     # Also save to actual .txt file
     (base_dir / "neededtxt.txt").write_text(full_text, encoding="utf-8")
 else:
-    print("Warning: No text could be extracted (the PDF might be an image).")
+    print("Warning: No text could be extracted.")
 
-
-###########/ #imports the library needed
-##import PyPDF2
-
-
-#defines a fn that takes the parameter pdf_path
-#def pdf2txt(pdf_path):
-#
- ##   with open(pdf_path, "rb") as file:
-   ##    text = ""
-     #   for page in reader.pages:
-      #      text += page.extract_text()
-#
- #       return text
-   
-#text = pdf2txt("Syllabus LING.pdf")
-#print(text)
-##################################

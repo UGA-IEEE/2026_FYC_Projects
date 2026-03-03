@@ -13,8 +13,16 @@ DoubleCell DOUBLE_MAP[] = {
     /*for cases that need two cells to represent a single character, 
     the first two fields are the patterns of the two cells and the third field is what they represent
     */
-    {"001011", "001110", "("},
-    {"001110", "001011", ")"}
+    {"000100", "101001", "("},
+    {"000100", "010110", ")"},  
+    {"010101", "100001", "\\"},
+    {"010101", "010010", "/"},
+    {"010001", "101001", "["},
+    {"010001", "010110", "]"},
+    {"010101","101001", "{"},
+    {"010101","010110","}"},
+    {"010000","010110", "<"},
+    {"010000","101001", ">"},
 };
 
 int DOUBLE_COUNT =
@@ -25,13 +33,51 @@ int DOUBLE_COUNT =
 #define NUMBER_SIGN  2
 
 char BRAILLE_MAP[128][7];
+// ----- word contractions -----
+typedef struct {
+    const char *word;
+    const char *pattern;
+} WordContraction;
+
+WordContraction WORD_MAP[] = {
+    {"and",  "111011"},
+    {"for",  "111111"},
+    {"the",  "011011"},
+    {"with", "011111"},
+    {"of",   "101111"}
+};
+
+int WORD_COUNT =
+    sizeof(WORD_MAP)/sizeof(WORD_MAP[0]);
+
+typedef struct {
+    const char *letters;
+    const char *pattern;
+} LetterContraction;
+
+LetterContraction LETTER_MAP[] = {
+    {"ch","100001"},
+    {"sh","110001"},
+    {"th","110101"},
+    {"wh","100101"},
+    {"ou","101101"},
+    {"st","010010"},
+    {"gh","101001"},
+    {"ed","111001"},
+    {"er","111101"},
+    {"ow","011001"},
+    {"ar","010110"},
+    {"ing","010011"}
+};
+
+int LETTER_COUNT =
+    sizeof(LETTER_MAP)/sizeof(LETTER_MAP[0]);
 
 /// Initialize Braille map
 void initialize_braille_map() {
 
     for (int i = 0; i < 128; i++)
         strcpy(BRAILLE_MAP[i], "000000");
-
     /// Letters with ASCII numbers, 1 is raised, 0 is lowered
     strcpy(BRAILLE_MAP['a'], "100000");
     strcpy(BRAILLE_MAP['b'], "101000");
@@ -82,6 +128,9 @@ void initialize_braille_map() {
     strcpy(BRAILLE_MAP['!'], "001110");
     strcpy(BRAILLE_MAP['?'], "001011");
     strcpy(BRAILLE_MAP['-'], "001001");
+    strcpy(BRAILLE_MAP['\''], "000010");
+    strcpy(BRAILLE_MAP['"'], "001011");
+
 
     /// Indicators that come before a capital letter or number
     strcpy(BRAILLE_MAP[CAPITAL_SIGN], "000001");
@@ -119,7 +168,29 @@ int match_double_cell(const char *c1,
     }
     return 0;
 }
+const char* match_word(const char *word)
+{
+    for (int i = 0; i < WORD_COUNT; i++) {
+        if (strcmp(word, WORD_MAP[i].word) == 0)
+            return WORD_MAP[i].pattern;
+    }
+    return NULL;
+}
 
+const char* match_letters(const char *text)
+{
+    for (int i = 0; i < LETTER_COUNT; i++) {
+        int len = strlen(LETTER_MAP[i].letters);
+
+        if (strncmp(text,
+                    LETTER_MAP[i].letters,
+                    len) == 0)
+            return LETTER_MAP[i].pattern;
+    }
+    return NULL;
+}
+
+// Print Braille to FILE, checking for double cell patterns first
 void print_braille_with_doubles(FILE *out,
                                 const char* patterns[],
                                 int count)
@@ -177,8 +248,16 @@ int main() {
         //makes it so that the newline character at the end of the line is replaced with a null terminator
         input[strcspn(input, "\r\n")] = '\0';
         int len = strlen(input);
-
         for (int i = 0; i < len && pattern_count < 1023; i++) {
+            // Word contraction (check whole word first)
+            if (i == 0) {
+                const char *word_pattern = match_word(input);
+
+    if (word_pattern) {
+        braille_patterns[pattern_count++] = word_pattern;
+        break;   
+    }
+}
 
             unsigned char c = input[i];
 
