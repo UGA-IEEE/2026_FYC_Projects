@@ -20,7 +20,7 @@ lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
 lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)   # keep SRCLR high (inactive)
 
 spi = spidev.SpiDev()
-spi.open(0, 0)
+spi.open(10, 0)
 spi.max_speed_hz = 50000
 spi.mode = 0
 
