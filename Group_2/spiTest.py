@@ -8,7 +8,7 @@ SRCLR = 2
 
 # Open GPIO chip.
 # On many Pi 5 systems this is gpiochip4, but check `gpiodetect` if needed.
-chip = gpiod.Chip("gpiodetect")
+chip = gpiod.Chip("gpiochip0")
 
 rclk = chip.get_line(RCLK)
 srclr = chip.get_line(SRCLR)
