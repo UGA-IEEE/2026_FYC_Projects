@@ -21,7 +21,7 @@ lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)   # keep SRCLR high (inactive)
 
 spi = spidev.SpiDev()
 spi.open(10, 0)
-spi.max_speed_hz = 50000
+spi.max_speed_hz = 1000
 spi.mode = 0
 
 def latch():
