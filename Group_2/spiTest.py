@@ -2,70 +2,55 @@ import time
 import spidev
 import gpiod
 
-# BCM numbers
 RCLK = 16
 SRCLR = 2
 
-# Open GPIO chip.
-# On many Pi 5 systems this is gpiochip4, but check `gpiodetect` if needed.
-chip = gpiod.Chip("/dev/gpiochip0")
+chip_path = "/dev/gpiochip0"
 
-rclk = chip.get_line(RCLK)
-srclr = chip.get_line(SRCLR)
+lines = gpiod.request_lines(
+    chip_path,
+    consumer="595-test",
+    config={
+        RCLK: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
+        SRCLR: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
+    },
+)
 
-rclk.request(consumer="595-test-rclk", type=gpiod.LINE_REQ_DIR_OUT, default_vals=[0])
-srclr.request(consumer="595-test-srclr", type=gpiod.LINE_REQ_DIR_OUT, default_vals=[1])
+# Set initial values
+lines.set_value(RCLK, 0)
+lines.set_value(SRCLR, 1)   # keep clear inactive
 
 spi = spidev.SpiDev()
-spi.open(0, 0)               # SPI0 CE0 device node; CE0 is not used by the 595 here
-spi.max_speed_hz = 50000     # start slow
-spi.mode = 0b00
+spi.open(0, 0)
+spi.max_speed_hz = 50000
+spi.mode = 0
 
 def latch():
-    rclk.set_value(0)
+    lines.set_value(RCLK, 1)
     time.sleep(0.001)
-    rclk.set_value(1)
+    lines.set_value(RCLK, 0)
     time.sleep(0.001)
-    rclk.set_value(0)
 
 def clear_register():
-    # SRCLR is active low
-    srclr.set_value(0)
+    lines.set_value(SRCLR, 0)   # active low
     time.sleep(0.001)
-    srclr.set_value(1)
+    lines.set_value(SRCLR, 1)
     latch()
 
-def write_595(value: int):
-    # Shift 8 bits into the shift register
+def write_595(value):
     spi.xfer2([value & 0xFF])
-
-    # Copy shift register -> output register
     latch()
-
-def run_patterns():
-    patterns = [
-        0x00,  # QA=0 QB=0
-        0x01,  # QA=1 QB=0
-        0x02,  # QA=0 QB=1
-        0x03,  # QA=1 QB=1
-        0x55,  # 01010101
-        0xAA,  # 10101010
-        0xFF,  # all high
-        0x00,  # all low
-    ]
-
-    for p in patterns:
-        print(f"Writing 0x{p:02X}")
-        write_595(p)
-        time.sleep(1.0)
 
 try:
     print("Clearing register...")
     clear_register()
     time.sleep(1)
 
-    print("Running fixed patterns...")
-    run_patterns()
+    print("Running patterns...")
+    for p in [0x00, 0x01, 0x02, 0x03, 0x55, 0xAA, 0xFF]:
+        print(f"Writing 0x{p:02X}")
+        write_595(p)
+        time.sleep(1)
 
     print("Walking bit test...")
     while True:
@@ -78,6 +63,4 @@ try:
 except KeyboardInterrupt:
     write_595(0x00)
     spi.close()
-    rclk.release()
-    srclr.release()
     print("Done.")
