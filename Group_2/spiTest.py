@@ -1,49 +1,45 @@
-import time
-import spidev
-import gpiod
+# import time
+# import spidev
+# import gpiod
 
-RCLK = 16
-SRCLR = 2
-chip_path = "/dev/gpiochip0"
+# RCLK = 16
+# SRCLR = 2
+# chip_path = "/dev/gpiochip0"
 
-lines = gpiod.request_lines(
-    chip_path,
-    consumer="595-test",
-    config={
-        RCLK: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
-        SRCLR: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
-    },
-)
+# lines = gpiod.request_lines(
+#     chip_path,
+#     consumer="595-test",
+#     config={
+#         RCLK: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
+#         SRCLR: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
+#     },
+# )
 
-# Initial states
-lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
-lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)   # keep SRCLR high (inactive)
+# # Initial states
+# lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
+# lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)   # keep SRCLR high (inactive)
 
-spi = spidev.SpiDev()
-spi.open(10, 0)
-spi.max_speed_hz = 1000
-spi.mode = 0
+# spi = spidev.SpiDev()
+# spi.open(10, 0)
+# spi.max_speed_hz = 1000
+# spi.mode = 0
 
-def latch():
-    lines.set_value(RCLK, gpiod.line.Value.ACTIVE)
-    time.sleep(0.001)
-    lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
-    time.sleep(0.001)
+# def latch():
+#     lines.set_value(RCLK, gpiod.line.Value.ACTIVE)
+#     time.sleep(0.001)
+#     lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
+#     time.sleep(0.001)
 
-def clear_register():
-    # SRCLR is active low
-    lines.set_value(SRCLR, gpiod.line.Value.INACTIVE)
-    time.sleep(0.001)
-    lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)
-    latch()
+# def clear_register():
+#     # SRCLR is active low
+#     lines.set_value(SRCLR, gpiod.line.Value.INACTIVE)
+#     time.sleep(0.001)
+#     lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)
+#     latch()
 
-def write_595(value):
-    spi.xfer2([value & 0xFF])
-    latch()
-
-while True:
-    spi.xfer2([0xFF])
-
+# def write_595(value):
+#     spi.xfer2([value & 0xFF])
+#     latch()
 
 # try:
 #     clear_register()
@@ -57,3 +53,37 @@ while True:
 #     write_595(0x00)
 #     spi.close()
 #     print("Done.")
+
+import time
+import spidev
+import gpiod
+
+RCLK = 16
+BUS = 10
+DEV = 0
+
+lines = gpiod.request_lines(
+    "/dev/gpiochip0",
+    consumer="595-test",
+    config={
+        RCLK: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
+    },
+)
+
+lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
+
+spi = spidev.SpiDev()
+spi.open(BUS, DEV)
+spi.max_speed_hz = 1000
+spi.mode = 0
+
+def latch():
+    lines.set_value(RCLK, gpiod.line.Value.ACTIVE)
+    time.sleep(0.01)
+    lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
+    time.sleep(0.01)
+
+while True:
+    spi.xfer2([0xAA])
+    latch()
+    time.sleep(0.1)
