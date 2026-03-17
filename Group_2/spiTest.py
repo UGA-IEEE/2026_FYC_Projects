@@ -48,7 +48,7 @@ while True:
         for p in [0x00, 0x01, 0x02, 0x03, 0x55, 0xAA, 0xFF]:
             print(f"Writing 0x{p:02X}")
             write_595(p)
-            time.sleep(1)
+            
 
     except KeyboardInterrupt:
         write_595(0x00)
