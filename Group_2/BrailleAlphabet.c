@@ -10,29 +10,29 @@ typedef struct {
 } DoubleCell;
 
 DoubleCell DOUBLE_MAP[] = {
-    /*for cases that need two cells to represent a single character, 
+    /*for cases that need two cells to represent a single character,
     the first two fields are the patterns of the two cells and the third field is what they represent
     */
     {"000100", "101001", "("},
-    {"000100", "010110", ")"},  
+    {"000100", "010110", ")"},
     {"010101", "100001", "\\"},
     {"010101", "010010", "/"},
     {"010001", "101001", "["},
     {"010001", "010110", "]"},
-    {"010101","101001", "{"},
-    {"010101","010110","}"},
-    {"010000","010110", "<"},
-    {"010000","101001", ">"},
+    {"010101", "101001", "{"},
+    {"010101", "010110", "}"},
+    {"010000", "010110", "<"},
+    {"010000", "101001", ">"},
 };
 
 int DOUBLE_COUNT =
     sizeof(DOUBLE_MAP) / sizeof(DOUBLE_MAP[0]);
 
-
 #define CAPITAL_SIGN 1
 #define NUMBER_SIGN  2
 
 char BRAILLE_MAP[128][7];
+
 // ----- word contractions -----
 typedef struct {
     const char *word;
@@ -48,7 +48,7 @@ WordContraction WORD_MAP[] = {
 };
 
 int WORD_COUNT =
-    sizeof(WORD_MAP)/sizeof(WORD_MAP[0]);
+    sizeof(WORD_MAP) / sizeof(WORD_MAP[0]);
 
 typedef struct {
     const char *letters;
@@ -56,28 +56,28 @@ typedef struct {
 } LetterContraction;
 
 LetterContraction LETTER_MAP[] = {
-    {"ch","100001"},
-    {"sh","110001"},
-    {"th","110101"},
-    {"wh","100101"},
-    {"ou","101101"},
-    {"st","010010"},
-    {"gh","101001"},
-    {"ed","111001"},
-    {"er","111101"},
-    {"ow","011001"},
-    {"ar","010110"},
-    {"ing","010011"}
+    {"ch",  "100001"},
+    {"sh",  "110001"},
+    {"th",  "110101"},
+    {"wh",  "100101"},
+    {"ou",  "101101"},
+    {"st",  "010010"},
+    {"gh",  "101001"},
+    {"ed",  "111001"},
+    {"er",  "111101"},
+    {"ow",  "011001"},
+    {"ar",  "010110"},
+    {"ing", "010011"}
 };
 
 int LETTER_COUNT =
-    sizeof(LETTER_MAP)/sizeof(LETTER_MAP[0]);
+    sizeof(LETTER_MAP) / sizeof(LETTER_MAP[0]);
 
 /// Initialize Braille map
 void initialize_braille_map() {
-
     for (int i = 0; i < 128; i++)
         strcpy(BRAILLE_MAP[i], "000000");
+
     /// Letters with ASCII numbers, 1 is raised, 0 is lowered
     strcpy(BRAILLE_MAP['a'], "100000");
     strcpy(BRAILLE_MAP['b'], "101000");
@@ -131,45 +131,34 @@ void initialize_braille_map() {
     strcpy(BRAILLE_MAP['\''], "000010");
     strcpy(BRAILLE_MAP['"'], "001011");
 
-
     /// Indicators that come before a capital letter or number
     strcpy(BRAILLE_MAP[CAPITAL_SIGN], "000001");
     strcpy(BRAILLE_MAP[NUMBER_SIGN],  "010100");
 }
 
 /// Print Braille to FILE with spaces between characters
-void print_braille(FILE *out,
-                   const char* patterns[],
-                   int count) {
-
+void print_braille(FILE *out, const char *patterns[], int count) {
     if (count == 0) return;
 
-    // Print each 6-digit pattern with a space after it
     for (int i = 0; i < count; i++) {
-        fprintf(out, "%s ", patterns[i]);   
+        fprintf(out, "%s ", patterns[i]);
     }
 
-    //newline after each word
     fprintf(out, "\n");
 }
 
-int match_double_cell(const char *c1,
-                      const char *c2,
-                      const char **replacement)
-{
+int match_double_cell(const char *c1, const char *c2, const char **replacement) {
     for (int i = 0; i < DOUBLE_COUNT; i++) {
-
         if (strcmp(c1, DOUBLE_MAP[i].cell1) == 0 &&
             strcmp(c2, DOUBLE_MAP[i].cell2) == 0) {
-
             *replacement = DOUBLE_MAP[i].replacement;
             return 1;
         }
     }
     return 0;
 }
-const char* match_word(const char *word)
-{
+
+const char *match_word(const char *word) {
     for (int i = 0; i < WORD_COUNT; i++) {
         if (strcmp(word, WORD_MAP[i].word) == 0)
             return WORD_MAP[i].pattern;
@@ -177,87 +166,77 @@ const char* match_word(const char *word)
     return NULL;
 }
 
-const char* match_letters(const char *text)
-{
+const char *match_letters(const char *text) {
     for (int i = 0; i < LETTER_COUNT; i++) {
         int len = strlen(LETTER_MAP[i].letters);
 
-        if (strncmp(text,
-                    LETTER_MAP[i].letters,
-                    len) == 0)
+        if (strncmp(text, LETTER_MAP[i].letters, len) == 0)
             return LETTER_MAP[i].pattern;
     }
     return NULL;
 }
 
 // Print Braille to FILE, checking for double cell patterns first
-void print_braille_with_doubles(FILE *out,
-                                const char* patterns[],
-                                int count)
-{
+void print_braille_with_doubles(FILE *out, const char *patterns[], int count) {
     for (int i = 0; i < count; i++) {
-
         const char *replacement;
 
-        // Try matching a 2-cell symbol first
         if (i < count - 1 &&
-            match_double_cell(patterns[i],
-                              patterns[i+1],
-                              &replacement)) {
-
+            match_double_cell(patterns[i], patterns[i + 1], &replacement)) {
             fprintf(out, "%s ", replacement);
-            i++;        // skip second cell
+            i++;
             continue;
         }
 
-        // Otherwise print normal cell
         fprintf(out, "%s ", patterns[i]);
     }
 
     fprintf(out, "\n");
 }
 
-int main() {
-
+int main(int argc, char *argv[]) {
     initialize_braille_map();
 
-    // Try to open the file in the Group_2 folder first
-    FILE *in = fopen("pdfParser_python/neededtxt.txt", "r");
-
-    if (!in) {
-        // Error message if it still can't find it, returns 1
-        printf("'neededtxt.txt' not found inside Group_2 folder.\n");
+    if (argc < 2) {
+        printf("Usage: %s /path/to/neededtxt.txt\n", argv[0]);
         return 1;
     }
 
-    // Path to save inside the Group_2 folder
+    FILE *in = fopen(argv[1], "r");
+
+    if (!in) {
+        printf("Could not open input file: %s\n", argv[1]);
+        return 1;
+    }
+
     FILE *out = fopen("./BrailleOutput.txt", "w");
 
     if (!out) {
-        printf("Error creating BrailleOutput.txt inside Group_2.\n");
+        printf("Error creating BrailleOutput.txt.\n");
         fclose(in);
         return 1;
     }
 
     char input[256];
-    const char* braille_patterns[1024]; 
+    const char *braille_patterns[1024];
     int pattern_count = 0;
 
     // Read file line by line
     while (fgets(input, sizeof(input), in)) {
-        //makes it so that the newline character at the end of the line is replaced with a null terminator
+        // makes it so that the newline character at the end of the line is replaced with a null terminator
         input[strcspn(input, "\r\n")] = '\0';
         int len = strlen(input);
+
         for (int i = 0; i < len && pattern_count < 1023; i++) {
             // Word contraction (check whole word first)
             if (i == 0) {
                 const char *word_pattern = match_word(input);
 
-    if (word_pattern) {
-        braille_patterns[pattern_count++] = word_pattern;
-        break;   
-    }
-}
+                if (word_pattern) {
+                    braille_patterns[pattern_count++] = word_pattern;
+                    break;
+                }
+            }
 
             unsigned char c = input[i];
 
@@ -265,7 +244,7 @@ int main() {
             if (c == ' ') {
                 if (pattern_count > 0) {
                     /*
-                    uses the braille patterns collected for the current word 
+                    uses the braille patterns collected for the current word
                     and prints them to the output file then resets the pattern count for the next word
                     */
                     print_braille(out, braille_patterns, pattern_count);
@@ -284,7 +263,9 @@ int main() {
             if (isdigit(c)) {
                 braille_patterns[pattern_count++] = BRAILLE_MAP[NUMBER_SIGN];
             }
-            /*looks up if the character is in the Braille map and adds
+
+            /*
+            looks up if the character is in the Braille map and adds
             the corresponding pattern to the array of patterns for the current word
             */
             if (c < 128) {
@@ -302,7 +283,7 @@ int main() {
     fclose(in);
     fclose(out);
 
-    printf("Binary output is in Group_2 folder.\n");
+    printf("Binary output written to BrailleOutput.txt\n");
 
     return 0;
 }
