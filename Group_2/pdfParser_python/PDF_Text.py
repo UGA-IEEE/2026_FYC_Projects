@@ -1,23 +1,31 @@
-
 from pathlib import Path
 from PyPDF2 import PdfReader
+import sys
 
 
-base_dir = Path(__file__).parent
+# Get PDF path from command-line argument
+if len(sys.argv) < 2:
+    print("Usage: python3 PDF_Text.py /path/to/file.pdf")
+    exit()
+
+input_pdf = Path(sys.argv[1])
+
+if not input_pdf.exists():
+    print(f"File not found: {input_pdf}")
+    exit()
+
+base_dir = input_pdf.parent
+
 # part 1: Find and Rename
-pdf_files = [f for f in base_dir.glob("*.pdf") if f.name != "neededtxt.pdf"]
+target_path = base_dir / "neededtxt.pdf"
 
-
-if not pdf_files:
-    target_path = base_dir / "neededtxt.pdf"
-    if not target_path.exists():
-        print("No PDF found.")
-        exit()
+if input_pdf.name != "neededtxt.pdf":
+    if target_path.exists():
+        target_path.unlink()  # remove old neededtxt.pdf if it exists
+    input_pdf.replace(target_path)
+    print(f"File Renamed: {input_pdf.name} -> neededtxt.pdf")
 else:
-# rename file for BrailleAlphabet code
-    target_path = base_dir / "neededtxt.pdf"
-    pdf_files[0].replace(target_path)
-    print(f"File Renamed: {pdf_files[0].name} neededtxt.pdf")
+    target_path = input_pdf
 
 
 # Part 2: Extract Text
@@ -26,13 +34,12 @@ full_text = " ".join([page.extract_text() for page in reader.pages if page.extra
 full_text = full_text.replace("\n", "")
 
 
-#Part 3: Print to Terminal
+# Part 3: Print to Terminal
 if full_text.strip():
     print(full_text)
     print("End\n")
-   
+
     # Also save to actual .txt file
     (base_dir / "neededtxt.txt").write_text(full_text, encoding="utf-8")
 else:
     print("Warning: No text could be extracted.")
-
