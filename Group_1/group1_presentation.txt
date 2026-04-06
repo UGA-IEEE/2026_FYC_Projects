@@ -1,0 +1,33 @@
+Important items to consider for presentation:
+- Intro
+	- High-level overview  
+
+- Machine Learning model
+	- Definitely can be 5 minutes
+
+- UI design
+	- What framework is used, why it was used
+
+- CAD design
+	- What were the considerations that needed to be made when designing the CAD model for both the watch and the Pi?
+ 
+- Hardware choices
+	- What microcontroller was used (ESP32-C3 vs. ESP32-WROOM vs. Pi Pico for example)
+	- Why RPi instead of Arduino - look at clock speeds and other considerations
+	- Sensor choices
+	- Battery choices
+
+- Hardware-to-Software integration
+	- What options were there? (MQTT vs. Bluetooth)
+	- How was it integrated with the UI app running the RPi?
+ 
+- Findings in data
+	- Were there improvements in sleep quality in testing? 
+	- How did the model improve one's sleep?
+	- What was seen in the data?  
+	
+- Next steps in development 
+	- Mobile app integration
+	- ADC integration for a thermistor to better improve the sleep model 
+
+* Note: hardware-to-software integration section and ML section should definitely utilize flowcharts to visualize the pipeline of the code in a simple way for the audience to understand easily. Some options include: PPT (simplest), Mermaid AI (clean)
