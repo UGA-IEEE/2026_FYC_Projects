@@ -1,10 +1,14 @@
 import time
 import spidev
 import gpiod
+from pathlib import Path
 
 RCLK = 16
 SRCLR = 2
 chip_path = "/dev/gpiochip0"
+
+# Path to the output file produced by BrailleAlphabet.c
+BRAILLE_FILE = Path("BrailleOutput.txt")
 
 lines = gpiod.request_lines(
     chip_path,
@@ -41,17 +45,35 @@ def write_595(value):
     spi.xfer2([value & 0xFF])
     latch()
 
-while True:
-    try:
-        clear_register()
+def is_binary_token(token):
+    return len(token) == 6 and all(c in "01" for c in token)
 
-        for p in [0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F]:
-            print(f"Writing 0x{p:01X}")
-            write_595(p)
-            
+try:
+    if not BRAILLE_FILE.exists():
+        print(f"File not found: {BRAILLE_FILE}")
+        raise SystemExit(1)
 
-    except KeyboardInterrupt:
-        write_595(0x00)
-        spi.close()
-        print("Done.")
+    clear_register()
 
+    with open(BRAILLE_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            tokens = line.strip().split()
+
+            for token in tokens:
+                # Only process 6-bit binary tokens from the C file
+                if is_binary_token(token):
+                    value = int(token, 2)
+                    print(f"Writing {token} -> 0x{value:02X}")
+                    write_595(value)
+                    time.sleep(0.5)   # adjust delay as needed
+
+                else:
+                    print(f"Skipping non-binary token: {token}")
+
+except KeyboardInterrupt:
+    print("Interrupted by user.")
+
+finally:
+    write_595(0x00)
+    spi.close()
+    print("Done.")
