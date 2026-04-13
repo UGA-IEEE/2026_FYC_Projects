@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PROJECT_DIR="/full/path/to/your/project"
+PROJECT_DIR="/documents/2026_FYC_Projects/Group_2"
 WATCH_DIR="/media/ieeegrp2/0403-0201/DCIM/100MEDIA"
 PDF_SCRIPT="$PROJECT_DIR/PDF_Text.py"
 C_PROGRAM="$PROJECT_DIR/BrailleAlphabet"
-SPI_SCRIPT="$PROJECT_DIR/Brailly.py"
+I2C_SCRIPT="$PROJECT_DIR/i2c_driver.py"
 
 echo "Watching folder: $WATCH_DIR"
 
@@ -17,6 +17,7 @@ do
     if [ -f "$FILEPATH" ]; then
         echo "New file ready: $FILEPATH"
 
+        # Step 1: Extract text from PDF
         python3 "$PDF_SCRIPT" "$FILEPATH"
 
         TXT_PATH="$(dirname "$FILEPATH")/neededtxt.txt"
@@ -25,6 +26,7 @@ do
             continue
         fi
 
+        # Step 2: Convert text to braille binary
         "$C_PROGRAM" "$TXT_PATH"
 
         BRAILLE_PATH="$PROJECT_DIR/BrailleOutput.txt"
@@ -33,6 +35,8 @@ do
             continue
         fi
 
-        python3 "$SPI_SCRIPT" "$BRAILLE_PATH"
+        # Step 3: Send braille binary to TPIC2810 over I2C
+        python3 "$I2C_SCRIPT" "$BRAILLE_PATH"
     fi
+done    fi
 done
