@@ -1,79 +1,81 @@
+import sys
 import time
-import spidev
-import gpiod
 from pathlib import Path
+from smbus2 import SMBus
+import gpiod
 
-RCLK = 16
-SRCLR = 2
+# TPIC2810 settings
+I2C_BUS = 1
+TPIC_ADDR = 0x60      # common default if A2/A1/A0 are all low; adjust if needed
+SUBADDR_WRITE_AND_LATCH = 0x44
+
+# Optional GPIO line for G (output enable)
+# Datasheet: G high -> all outputs off, G low -> outputs active
+G_PIN = 16
 chip_path = "/dev/gpiochip0"
 
-# Path to the output file produced by BrailleAlphabet.c
-BRAILLE_FILE = Path("BrailleOutput.txt")
+if len(sys.argv) < 2:
+    print("Usage: python3 Brailly.py /path/to/BrailleOutput.txt")
+    raise SystemExit(1)
 
-lines = gpiod.request_lines(
-    chip_path,
-    consumer="595-test",
-    config={
-        RCLK: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
-        SRCLR: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
-    },
-)
-
-# Initial states
-lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
-lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)   # keep SRCLR high (inactive)
-
-spi = spidev.SpiDev()
-spi.open(0, 0)
-spi.max_speed_hz = 1000
-spi.mode = 0
-
-def latch():
-    lines.set_value(RCLK, gpiod.line.Value.ACTIVE)
-    time.sleep(0.001)
-    lines.set_value(RCLK, gpiod.line.Value.INACTIVE)
-    time.sleep(0.001)
-
-def clear_register():
-    # SRCLR is active low
-    lines.set_value(SRCLR, gpiod.line.Value.INACTIVE)
-    time.sleep(0.001)
-    lines.set_value(SRCLR, gpiod.line.Value.ACTIVE)
-    latch()
-
-def write_595(value):
-    spi.xfer2([value & 0xFF])
-    latch()
+BRAILLE_FILE = Path(sys.argv[1])
 
 def is_binary_token(token):
     return len(token) == 6 and all(c in "01" for c in token)
+
+def braille6_to_byte(token):
+    # Direct mapping: "100000" -> 0x20
+    # If your wiring is reversed, use: return int(token[::-1], 2)
+    return int(token, 2)
+
+# Request GPIO for G pin so outputs can be enabled
+lines = gpiod.request_lines(
+    chip_path,
+    consumer="tpic2810-braille",
+    config={
+        G_PIN: gpiod.LineSettings(direction=gpiod.line.Direction.OUTPUT),
+    },
+)
+
+# Enable outputs: G low
+lines.set_value(G_PIN, gpiod.line.Value.INACTIVE)
+
+bus = SMBus(I2C_BUS)
 
 try:
     if not BRAILLE_FILE.exists():
         print(f"File not found: {BRAILLE_FILE}")
         raise SystemExit(1)
 
-    clear_register()
-
     with open(BRAILLE_FILE, "r", encoding="utf-8") as f:
         for line in f:
             tokens = line.strip().split()
 
             for token in tokens:
-                # Only process 6-bit binary tokens from the C file
-                if is_binary_token(token):
-                    value = int(token, 2)
-                    print(f"Writing {token} -> 0x{value:02X}")
-                    write_595(value)
-                    time.sleep(0.5)   # adjust delay as needed
-
-                else:
+                if not is_binary_token(token):
                     print(f"Skipping non-binary token: {token}")
+                    continue
+
+                value = braille6_to_byte(token)
+
+                print(f"Writing {token} -> 0x{value:02X}")
+
+                # TPIC2810: subaddress 0x44 writes data and transfers to outputs immediately
+                bus.write_i2c_block_data(TPIC_ADDR, SUBADDR_WRITE_AND_LATCH, [value])
+
+                time.sleep(0.5)
 
 except KeyboardInterrupt:
     print("Interrupted by user.")
 
 finally:
-    write_595(0x00)
-    spi.close()
+    try:
+        # Turn everything off
+        bus.write_i2c_block_data(TPIC_ADDR, SUBADDR_WRITE_AND_LATCH, [0x00])
+        # Disable outputs
+        lines.set_value(G_PIN, gpiod.line.Value.ACTIVE)
+    except Exception:
+        pass
+
+    bus.close()
     print("Done.")
