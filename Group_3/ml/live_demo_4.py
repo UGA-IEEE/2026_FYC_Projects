@@ -61,15 +61,15 @@ set_motor_speed(SPEED_PERCENT)
 # Label → Angle mapping
 # --------------------
 ANGLE_MAP = {
-    "USB_Drive": 45,
-    "RAM": 35,
-    "CPU": 180
+    "USB_Drive": 35,
+    "RAM": 3,
+    "CPU": 25
 }
 
 # --------------------
 # YOLO setup
 # --------------------
-model = YOLO("best.pt")
+model = YOLO("../ml_final/best.pt")
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
@@ -95,7 +95,7 @@ try:
 
         results = model.predict(
             frame,
-            conf=0.25,
+            conf=0.6,
             imgsz=320,
             verbose=False
         )

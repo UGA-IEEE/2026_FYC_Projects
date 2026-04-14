@@ -35,7 +35,7 @@ ANGLE_MAP = {
 # --------------------
 # YOLO + Camera setup
 # --------------------
-model = YOLO("best.pt")
+model = YOLO("../ml_final/best.pt")
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)

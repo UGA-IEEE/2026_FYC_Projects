@@ -1,4 +1,4 @@
- from ultralytics import YOLO
+from ultralytics import YOLO
 import cv2
 from gpiozero import Servo
 from time import sleep, time
@@ -29,15 +29,15 @@ def move_servo(angle):
 # Label → Angle mapping
 # --------------------
 ANGLE_MAP = {
-    "USB_Drive": 45,
-    "RAM": 35,
-    "CPU": 180
+    "USB_Drive": 35,
+    "RAM": 25,
+    "CPU": 5
 }
 
 # --------------------
 # YOLO setup
 # --------------------
-model = YOLO("best.pt")
+model = YOLO("../ml_final/best.pt")
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
